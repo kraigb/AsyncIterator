@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Async Iterator</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-light.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <!-- AsyncIterator references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/asynciterator.js"></script>
+    <script src="/js/default.js"></script>
+</head>
+<body>
+    <div id="header">
+        <h1>Async Iterators (UI thread)</h1>
+    </div>
+    
+    <div id="content">        
+        <button id="btnRun1">Run tests on AsyncIteratorBasic</button>
+        <div id="output1">
+            <p>Iterator 1 results: <span id="outputB1"></span></p>
+            <p>Iterator 2 results: <span id="outputB2">(should never change: operation gets canceled)</span></p>
+            <p>Iterator 3 results: <span id="outputB3"></span></p>
+        </div>
+        <p>&nbsp;</p>
+        <button id="btnRun2">Run tests on AsyncIteratorPromise</button>
+        <div id="output2">
+            <p>Promise 1 results: <span id="outputP1"></span></p>
+            <p>Promise 1 progress: <span id="outputP1P"></span></p>
+            <p>Promise 2 results: <span id="outputP2">(should never change: operation gets canceled)</span></p>
+            <p>Promise 3 results: <span id="outputP3"></span></p>
+        </div>
+
+    </div>
+</body>
+</html>

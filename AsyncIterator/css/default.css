@@ -1,0 +1,20 @@
+﻿body {
+    -ms-grid-columns: 120px 1fr;
+    -ms-grid-rows: 128px 1fr;
+    display: -ms-grid;
+    height: 100%;
+    width: 100%;
+
+}
+
+#header {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    margin-top: 37px;    
+}
+
+#content {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;    
+}
+

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="ProgrammingWin8-JS-CH3-AsyncIterator" Version="1.0.0.0" Publisher="CN=kraigb" />
+  <Properties>
+    <DisplayName>Async Iterator (3)</DisplayName>
+    <PublisherDisplayName>Kraig Brockschmidt</PublisherDisplayName>
+    <Logo>images\storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="Async Iterator (3)" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Async Iterator works with two classes that implement an async iteration pattern on the UI thread using setImmediate. The AsyncIteratorBasic class works with a simple completed handler callback for when the work is complete. The AsyncIteratorPromise class works as a WinJS promise, allowing multiple operations to be chained and multiple consumers to use the same promise." ForegroundText="light" BackgroundColor="#003765">
+        <DefaultTile ShowName="allLogos" ShortName="Async Iterator" />
+        <SplashScreen Image="images\splashscreen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
