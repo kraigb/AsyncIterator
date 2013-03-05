@@ -49,13 +49,13 @@ WinJS.Namespace.define("Utilities", {
         this.intermediateResult;
         this.canceled = false;
 
-        this._iterate = function (args) {
+        this._iterate = function (start, end) {
             //If canceled, we don't call setImmediate again and thus discard the work
             if (this.canceled) {
                 return;
             }
 
-            this.intermediateResult = workFunction(args);
+            this.intermediateResult = workFunction(start, end); 
             this.aggregateResult = aggregator(this.aggregateResult, this.intermediateResult);
             this.iteration += step;
 
@@ -63,8 +63,7 @@ WinJS.Namespace.define("Utilities", {
                 completedHandler(this.aggregateResult);
             } else {
                 //Do next iteration after yielding
-                setImmediate(this._iterate.bind(this),
-                    { start: args.end, end: Math.min(args.end + step, max), iteration: this.iteration });
+                setImmediate(this._iterate.bind(this), end, Math.min(end + step, max));
             }
         }
 
@@ -78,8 +77,7 @@ WinJS.Namespace.define("Utilities", {
         }
 
         //Kick off the work
-        setImmediate(this._iterate.bind(this),
-            { start: 0, end: step, iteration: this.iteration });
+        setImmediate(this._iterate.bind(this), 0, step);
     },
 
 
@@ -121,14 +119,14 @@ WinJS.Namespace.define("Utilities", {
         this.errorHandler = null;
         this.progressHandler = null;
 
-        this._iterate = function (args) {
+        this._iterate = function (start, end) {
             //If canceled, we don't call setImmediate again and thus discard the work. Note that this is
             //not an error condition; we neither call the completed nor error handlers.
             if (this.canceled) {
                 return;
             }
             
-            this.intermediateResult = workFunction(args);
+            this.intermediateResult = workFunction(start, end);
             this.aggregateResult = aggregator(this.aggregateResult, this.intermediateResult);
             this.iteration += step;
 
@@ -143,8 +141,7 @@ WinJS.Namespace.define("Utilities", {
                 }
 
                 //Do next iteration after yielding
-                setImmediate(this._iterate.bind(this),
-                    { start: args.end, end: Math.min(args.end + step, max), iteration: this.iteration });
+                setImmediate(this._iterate.bind(this), end, Math.min(end + step, max));                    
             }
         }
 
@@ -178,7 +175,7 @@ WinJS.Namespace.define("Utilities", {
             }
 
             //Kick off the work as soon as we're constructed
-            setImmediate(this._iterate.bind(this), { start: 0, end: step, iteration: this.iteration });
+            setImmediate(this._iterate.bind(this), 0, step);
         };
 
         //Cancelation function called if promise.cancel() is called in the consumer

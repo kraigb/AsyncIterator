@@ -25,10 +25,10 @@
 
 
     //Work and aggregator functions for simple counting
-    function calcPartialSum(args) {
+    function calcPartialSum(start, end) { 
         var result = 0;
-
-        for (var i = args.start; i < args.end; i++) {
+        
+        for (var i = start; i < end; i++) {
             result += i;
         };
 
@@ -41,10 +41,11 @@
 
 
     //Work and aggregator functions for object construction
-    function createObject(args) {
+    function createObject(start, end) { //args) {
         //Though we just create a simple object here, there could be much more work
         //done in this function, such as retrieving data from a service.
-        return { start: args.start, end: args.end }
+        return { start: start, end: end }; //{ start: args.start, end: args.end };
+        
     }
 
     function addToObject(currentArray, addedObj) {
